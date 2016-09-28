@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+<!DOCTYPE html ng-app="Sensem">
 <html>
 
 <head>
     <!--Importing angular-->
     <script type="text/javascript" src=https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js></script>
+    <script type="text/javascript" src=https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.min.js></script>
+    <script type="text/javascript" src="../controllers/login.js></script>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/custom.css" rel="stylesheet">
@@ -29,20 +31,20 @@
                         <form class="col s12">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input placeholder="Enter User name" id="username" type="text" class="validate">
+                                    <input placeholder="Enter User name" ng-model="username" type="text" class="validate">
                                     <label for="username">User Name</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input placeholder="Enter Password" id="password" type="password" class="validate">
+                                    <input placeholder="Enter Password" ng-model="password" type="password" class="validate">
                                     <label for="password">Password</label>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="card-action">
-                        <button class="waves-effect waves-light btn">Login</button>
+                        <button class="waves-effect waves-light btn" ng-click="submit()">Login</button>
                     </div>
                 </div>
             </div>
