@@ -1,6 +1,6 @@
-var app = angular.module('Sensem', ["ngRoute"]);
-app.config(function ($routeProvider) {
+var app = angular.module('senseApp', ['ngRoute']);
 
+app.config(function ($routeProvider) {
     $routeProvider
         .when('/', {
             templateUrl: 'index.html'
@@ -10,13 +10,14 @@ app.config(function ($routeProvider) {
         });
 });
 
-app.controller("loginController",function($scope,$location){
- $scope.submit=function(){
-     var username=$scope.username;
-     var password=$scope.password;
-     if($scope.username=="admin" && $scope.password=="admin"){
+app.controller('loginController',function($scope,$location){
+ $scope.submit = function(){
+     var username = $scope.username;
+     var password = $scope.password;
+     if($scope.username == 'admin' && $scope.password == 'admin'){
          $location.path('/dashboard');
+     } else {
+         alert('Wrong Stuff');
      }
  };
-
 });
