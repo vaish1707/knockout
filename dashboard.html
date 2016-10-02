@@ -1,9 +1,44 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-</head>
-<body>
-    <h1>Welcome to dashboard</h1>
-</body>
-</html>
+﻿<h3 class="center-align">Welcome to dashboard</h3>
+
+
+<div class="container">
+    <div class="card-panel ">
+        <div class="row">
+            <div class="col s12">
+                <ul class="tabs">
+                    <li class="tab col s3"><a href="#getDetails">Get Details</a></li>
+                    <li class="tab col s3"><a href="#insertDetails">Insert Details</a></li>
+                </ul>
+                <div id="getDetails" class="s12">
+                    <form>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input ng-model="product" type="text" class="validate">
+                                <label for="product">Product</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input ng-model="quantity" type="text" class="validate">
+                                <label for="quantity">Quantity</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <select>
+                                    <option value="" disabled selected>Choose your Chemical</option>
+                                    <option value="1">Hydrogen Peroxide</option>
+                                    <option value="2">Hydro Chloric Acid</option>
+                                    <option value="3">Benzene</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row"
+                                <button class="waves-effect waves-light btn" type="button">Calculate</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
