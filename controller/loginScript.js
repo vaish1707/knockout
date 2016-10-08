@@ -27,3 +27,13 @@ app.controller('loginCtrl', function ($scope, $location) {
     };
 });
 
+app.controller('addrawController',function($scope,$http){
+    $scope.addRaw() = function(){
+        $http.post('add_raw.php',{'raw_material':$scope.raw_name,'price_per_kg':$scope.price_per_kg})
+        .success(function(data){
+            console.log(data);
+        });
+        
+    }
+});
+
