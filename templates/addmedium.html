@@ -1,0 +1,14 @@
+<h1 class="header">Create New Medium</h1>
+
+<div class="row">
+    <div class="input-field col s6">
+        
+        <input ng-model="medium_name" type="text" class="validate"  placeholder="Type medium name here..." />
+        <input ng-model="raw_name" type="text" class="validate" placeholder="Type raw material name here..." />
+        <input ng-model="quantity" type="text" class="validate" id="form-quantity" placeholder="Type quantity here..." />
+        <input ng-model="price" type="text" class="validate" id="form-price" placeholder="Type price here..." />
+        <a id="btn-create-product" class="waves-effect waves-light btn margin-bottom-1em" ng-click="addmedium()">
+            <i class="material-icons left">add</i>Create</a>
+        <a class="modal-action modal-close waves-effect waves-light btn margin-bottom-1em"><i class="material-icons left">close</i>Close</a>
+    </div>
+</div>
