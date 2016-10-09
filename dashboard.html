@@ -6,7 +6,10 @@
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
     <link type="text/css" rel="stylesheet" href="css/custom.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
     <script src="js/angular.min.js"></script>
     <script src="js/angular-route.min.js"></script>
     <!--Let browser know website is optimized for mobile-->
@@ -14,7 +17,6 @@
 </head>
 
 <body ng-app="senseApp">
-
     <nav>
         <div class="nav-wrapper">
             <a href="#" class="brand-logo">SensemColours</a>
@@ -33,47 +35,48 @@
 
                             </ul>
                         </div>
-                        <div id="test1" class="col s12"><!-- ng-controller="getallcontroller">-->
-                            
-                             <div class="input-field col s4">
-                                 <form id="myform">
-                               <select ng-model="selectedink">
+                        <div id="test1" class="col s12">
+                            <!-- ng-controller="getallcontroller">-->
+
+                            <div class="input-field col s4">
+                                <form id="myform">
+                                    <select ng-model="selectedink">
                           <option ng-repeat="d in names">{{d.inkname}}</option>
                         </select>
-                           </form>   
-                                   
+                                </form>
+
                             </div>
-                            
-                              <!--  <a class="waves-effect waves-light btn">Get Estimate</a>-->
-                            
-                            
+
+                            <!--  <a class="waves-effect waves-light btn">Get Estimate</a>-->
+
+
                             <!-- table that shows product record list -->
-                           <!-- <table class="hoverable bordered">
+                            <!-- <table class="hoverable bordered">
 
                                 <thead>
                                     <tr>
                                        <!-- <th class="text-align-center">ID</th>-->
-                                      <!--  <th class="width-30-pct">Component</th>
+                            <!--  <th class="width-30-pct">Component</th>
                                         <th class="width-30-pct">Quantity</th>
                                         <th class="text-align-center">Price</th>
                                        <!-- <th class="text-align-center">Action</th>-->
-                                 <!--   </tr>
+                            <!--   </tr>
                                 </thead>
 
                                 <tbody ng-init="getAll()">
                                     <tr ng-repeat="d in names | filter:search">
                                       <!--  <td class="text-align-center">{{ d.id }}</td>-->
-                                       <!-- <td>{{ d.Component }}</td>
+                            <!-- <td>{{ d.Component }}</td>
                                         <td>{{ d.Quantity }}</td>
                                         <td class="text-align-center">{{ d.Price }}</td>
                                       <!--  <td>
                                             <a ng-click="readOne(d.id)" class="waves-effect waves-light btn margin-bottom-1em"><i class="material-icons left">edit</i>Edit</a>
                                         </td>-->
-                                   <!-- </tr>
+                            <!-- </tr>
                                 </tbody>
                             </table>-->
 
-                           <!-- <a class="waves-effect waves-light btn">Get Estimate</a>-->
+                            <!-- <a class="waves-effect waves-light btn">Get Estimate</a>-->
                         </div>
                         <div id="test2" class="col s12">
                             <div class="col s4 tab-spacing" ng-controller="addrawController" ng-init="getAll()">
@@ -88,7 +91,7 @@
                                                     <input ng-model="raw_name" type="text" class="validate">
                                                     <label for="raw_name">Raw Material</label>
                                                     <ul>
-                                                    <li ng-repeat="d in names | filter:raw_name">{{d.rawname}}</li>
+                                                        <li ng-repeat="d in names | filter:raw_name">{{d.rawname}}</li>
                                                     </ul>
                                                 </div>
                                                 <div class="input-field col s6">
@@ -144,7 +147,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col s4 tab-spacing"><!-- ng-controller="addInkcontroller">-->
+                            <div class="col s4 tab-spacing">
+                                <!-- ng-controller="addInkcontroller">-->
                                 <a class="waves-effect waves-light btn modal-trigger" href="#modal3">Ink</a>
 
                                 <!-- Ink Modal  -->
@@ -192,104 +196,9 @@
     </div>
 
     <!--Import jQuery before materialize.js-->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script type="text/javascript" src="js/materialize.min.js"></script>
     <script type="text/javascript" src="js/select-materialize.js"></script>
-    <script>
-
-        var app = angular.module('senseApp', []);
-
-app.controller('addrawController',function($scope,$http){
-      $scope.getAll = function(){
-    $http.get("select_raw.php").success(function(response){
-        $scope.names = response.records;
-        console.log($scope.names);
-    });
-}
-    $scope.addRawMeterial= function(){
-        $http.post('add_raw.php',{'raw_material':$scope.raw_name,'price_per_kg':$scope.price_per_kg})
-        .success(function(data){
-            console.log(data);
-           Materialize.toast('Data inserted successfully', 4000);
-          //  $('#successmessage').text('Data inserted successfully');
-        });
-        
-    }
-});
-
-/*app.controller('addmediumcontroller',function($scope,$http){
- $scope.clearForm = function(){ $scope.medium_name = ""; $scope.raw_name = ""; $scope.quantity = ""; $scope.price = "";}
- 
-    $scope.addmedium = function(){
-console.log($scope.medium_name);
-console.log($scope.raw_name);
-console.log($scope.quantity);
-console.log($scope.price);
-      // console.log("MEDIUMARRAY",this.mediumarray);
-     $http.post('add_medium.php',{
-            'medium_name':$scope.medium_name,
-            'raw_material':$scope.raw_name,
-            'quantity':$scope.quantity,
-            'price_per_kg':$scope.price
-        }).success(function(data){
-            $scope.clearForm();
-            console.log(data);
-        });  
-    }
-});
-*/
-
-/*
-app.controller('addInkcontroller',function($scope,$http){
- $scope.clearForm = function(){ $scope.ink_name = ""; $scope.raw_name = ""; $scope.quantity = "";}
- 
-    $scope.addInk = function(){
-console.log($scope.ink_name);
-console.log($scope.raw_name);
-console.log($scope.quantity);
-
-      // console.log("MEDIUMARRAY",this.mediumarray);
-     $http.post('add_ink.php',{
-            'ink_name':$scope.ink_name,
-            'raw_material':$scope.raw_name,
-            'quantity':$scope.quantity
-        }).success(function(data){
-            $scope.clearForm();
-            console.log(data);
-        });  
-    }
-});
-*/
-
-app.controller('getallcontroller',function($scope,$http){
-
-    $scope.getAll = function(){
-    $http.get("select_raw.php").success(function(response){
-        $scope.names = response.records;
-        console.log($scope.names);
-    });
-}
-});
-
-    
-    </script>
-    <!-- <script>
-        function addRows() {
-        var table = document.getElementById("fab_table");
-        var row = table.insertRow(-1);
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
    
-        cell1.innerHTML = '<input type="text" class="validate">';
-        cell2.innerHTML = '<input type="text" class="validate">';
-         cell3.innerHTML = '<input type="text" class="validate">';
-          cell4.innerHTML = '<input type="text" class="validate">';
-
-    }
-    </script>-->
-
 </body>
 
 </html>
